@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+
+  resources :images, except: [:edit, :update, :new]
+
+  resources :categories, except: [:index]
+
+  get 'upload', to: 'images#new', as: 'new_image'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'images#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
