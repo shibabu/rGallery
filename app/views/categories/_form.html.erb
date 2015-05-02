@@ -1,6 +1,6 @@
 <%= form_for(@category) do |f| %>
   <% if @category.errors.any? %>
-    <div id="error_explanation">
+    <div class="model_errors alert alert-danger">
       <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
 
       <ul>
@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <br>
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <%= link_to 'Back', root_path, class: 'btn btn-default' %>
 <% end %>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :images, except: [:edit, :update, :new]
+  resources :images, except: [:new]
 
   resources :categories, except: [:index]
 

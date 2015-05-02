@@ -1,9 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<div id="gallery">
+  <h2><%= @category.name %></h2>
+
+  <% if @images.any? %>
+      <% @images.each_slice 4 do |images_slice| %>
+          <div class="row">
+            <% images_slice.each do |image| %>
+                <div class="col-md-3">
+                  <div class="photo photo-type-line">
+                    <a href="<%= image.image_url %>" class="photo-hover" data-lightbox="my-images" data-title="<%= image.img_title %>">
+                      <div class="photo-info">
+                        <div class="headline"><%= image.img_title %></div>
+                        <div class="line"></div>
+                        <div class="desc"><%= image.img_desc %></div>
+                      </div>
+                      <div class="mask"></div>
+                    </a>
+                    <div class="photo-img"><%= image_tag image.image_url %></div>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+      <% end %>
+  <% end %>
+
+</div>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
