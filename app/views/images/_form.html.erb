@@ -32,5 +32,5 @@
 
     <br>
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
-    <%= link_to 'Back', images_path, class: 'btn btn-default' %>
+    <%= link_to 'Back', @image.new_record? ? root_path : category_path(@image.category), class: 'btn btn-default' %>
 <% end %>

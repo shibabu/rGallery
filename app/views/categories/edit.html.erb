@@ -1,3 +1,20 @@
 <h2>Editing Category</h2>
 
 <%= render 'form' %>
+
+<h3 class="page-header">Images in <%= @category.name %></h3>
+<div class="edit-images">
+  <% if @images.any? %>
+    <% @images.each_slice 6 do |images_slice| %>
+      <div class="row">
+        <% images_slice.each do |image| %>
+            <div class="col-md-2">
+              <%= image_tag image.image_url(:thumb) %>
+              <%= link_to 'Edit', edit_image_path(image), class: 'btn btn-success btn-xs' %>
+              <%= link_to 'Delete', image_path(image), method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: 'Are You Sure?'} %>
+            </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

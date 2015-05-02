@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    @images=@category.images
   end
 
   # POST /categories

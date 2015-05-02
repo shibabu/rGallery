@@ -17,5 +17,8 @@
   </div>
     <br>
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
-    <%= link_to 'Back', root_path, class: 'btn btn-default' %>
+    <%= link_to 'Back', @category.new_record? ? root_path : category_path, class: 'btn btn-default' %>
+    <% unless @category.new_record? %>
+        <%= link_to 'Delete', category_path, method: :delete, class: 'btn btn-danger pull-right', data: {confirm: 'Are You Sure?'} %>
+    <% end %>
 <% end %>
